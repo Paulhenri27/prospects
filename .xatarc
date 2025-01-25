@@ -1,0 +1,7 @@
+{
+  "databaseURL": "https://Paul-qh9fcg.eu-central-1.xata.sh/db/Prospects",
+  "codegen": {
+    "output": "src/xata.js",
+    "moduleType": "cjs"
+  }
+}

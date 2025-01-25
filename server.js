@@ -43,7 +43,7 @@ app.post("/users", async (req, res) => {
       number: parseInt(number, 10),
     });
 
-    res.status(201).json({ message: "User added successfully!", user });
+    res.status(201).json({ message: "User added successfully!" });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Failed to add user" });

@@ -9,7 +9,11 @@ const app = express();
 const xata = getXataClient();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: "*", // Replace with your frontend's URL for security
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization", "x-api-key"],
+}));
 app.use(express.json());
 
 // Define the valid API key (use .env for production)
@@ -17,7 +21,7 @@ const VALID_API_KEY = process.env.API_KEY || "your-secure-api-key";
 
 // Middleware to check API key
 const validateApiKey = (req, res, next) => {
-  const clientApiKey = req.headers["x-api"];
+  const clientApiKey = req.headers["x-api-key"];
   if (!clientApiKey || clientApiKey !== VALID_API_KEY) {
     return res.status(403).json({ error: "Forbidden: Invalid API key" });
   }
